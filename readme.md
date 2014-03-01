@@ -1,5 +1,6 @@
 # Soda Monokai theme for Prism.js
-Demo at http://monokai-theme-for-prism.js.ahrengot.github.io/
+![Example of HTML highlighting](http://cl.ly/image/2Y3U1S1E2i0o/highlighting.png)
+Demo at http://ahrengot.github.io/Monokai-theme-for-Prism.js/
 
 ## Usage
 [Prism.js](http://prismjs.com/) is a lightweight syntax highlighter with no dependencies. It's quite easy to work with too ... All you need to do is include `js/libs/prism.js` and `styles/syntax-highlighting.css
