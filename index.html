@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>Soda Monokai highlighting for Prism.js</title>
+
+	<!-- Syntax highlighting is defined in: -->
+	<link rel="stylesheet" href="styles/syntax-highlighting.css">
+
+	<style type="text/css">
+		body {
+			background: white;
+			color: #444;
+			font-family: "Helvetica Neue", Helvetica, sans-seif;
+		}
+
+		h1 { font-weight: lighter; }
+
+		h2, h3 { color: black; }
+
+		p {
+			line-height: 1.5;
+		}
+
+		h1, h2, h3, p {
+			-webkit-font-smoothing: antialiased;
+		}
+
+		p code {
+			-webkit-font-smoothing: initial;
+		}
+
+		.container {
+			width: 90%;
+			max-width: 760px;
+			margin: 8% auto;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<header>
+			<h1>Soda Monokai theme for Prism.js</h1>
+		</header>
+
+		<main role="main">
+		<h2>Usage</h2>
+		<p>Prism.js is a lightweight syntax highlighter with no dependencies. It's quite easy to work with too &hellip; All you need to do is include <code style="color: #6e9b5b;">js/libs/prism.js</code> and <code style="color: #6e9b5b;">styles/syntax-highlighting.css</code>
+
+		<h3>Example</h3>
+		Wrap your snippet in a <code class="language-markup">&lt;code class=&quot;language-*lang*&quot;&gt;&lt;/code&gt;</code> tag. That <code class="language-markup">&lt;code&gt;&lt;/code&gt;</code>-tag can optionally be wrapped in a <code class="language-markup">&lt;pre&gt;&lt;/pre&gt;</code> tag if you want preformatted output.</p>
+<pre><code class="language-markup">
+&lt;pre&gt;&lt;code class=&quot;language-*lang*&quot;&gt;
+    &lt;!-- Preformatted code --&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+		<p>In other words, wrap in a pre-tag if you want multiple lines as opposed to inline code.</p>
+		<p>Beware that indentation can mess up the padding around the code a bit, so if you get big marins try un-indenting your code snippet</p>
+
+		<h3>The theme supports the following languages</h3>
+		<ol>
+			<li>HTML</li>
+			<li>scss</li>
+			<li>css</li>
+			<li>JavaScript</li>
+			<li>PHP</li>
+		</ol>
+
+		<p>And here's how those different languages look:</p>
+<pre><code class="language-markup">
+&lt;!-- Here's a basic web page --&gt;
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en-US&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;title&gt;Untitled&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div id=&quot;container&quot;&gt;
+		&lt;header&gt;
+			&lt;h1&gt;Untitled&lt;/h1&gt;
+		&lt;/header&gt;
+		&lt;div id=&quot;main&quot; role=&quot;main&quot;&gt;
+			 &lt;p&gt;Here's some content...&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;script src=&quot;http://code.jquery.com/jquery-2.1.0.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script&gt;
+		$(function() {
+			log('DOM is Ready ...');
+		});
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-scss">
+// Add code type before code box
+pre {
+	position: relative;
+
+	&amp;:before {
+		padding: .5em 0;
+		@include background(linear-gradient(#333, black));
+		@include border-radius(4px 4px 0 0);
+	}
+
+	code {
+		display: block;
+	}
+}
+</code></pre>
+
+<pre><code class="language-css">
+/* line 251, syntax-highlighting.scss */
+pre {
+	position: relative;
+}
+/* line 254, syntax-highlighting.scss */
+pre:before {
+	padding: .5em 0;
+	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #000000));
+	background: -webkit-linear-gradient(#333333, #000000);
+	background: -moz-linear-gradient(#333333, #000000);
+	background: -o-linear-gradient(#333333, #000000);
+	background: linear-gradient(#333333, #000000);
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	-ms-border-radius: 4px 4px 0 0;
+	-o-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+/* line 269, syntax-highlighting.scss */
+pre code {
+	display: block;
+}
+</code></pre>
+
+<pre><code class="language-javascript">
+	function highlight(text, grammar) {
+		return Token.stringify(_.tokenize(text, grammar));
+	}
+
+	highlight( "My fantastic code", "JavaScript" );
+</code></pre>
+
+<pre><code class="language-php">
+/*-----------------------------------------------------------------------------------*/
+/*	Human readable time. '7 hours ago', '2 days ago', etc.
+/*-----------------------------------------------------------------------------------*/
+function time_ago($timestamp) {
+	$t1 = new DateTime( 'now' );
+	$t2 = new DateTime( '@'.$timestamp );
+
+	foreach ( $t2->diff( $t1 ) as $period => $value )
+	{
+		if ( $value > 0 &amp;&amp; strlen( $period ) == 1 )
+		{
+			switch ($period)
+			{
+				case 'y': $name = 'year'; break;
+				case 'm': $name = 'month'; break;
+				case 'd': $name = 'day'; break;
+				case 'h': $name = 'hour'; break;
+				case 'i': $name = 'minute'; break;
+				case 's': $name = 'second'; break;
+			}
+			return $value.' '.$name.($value>1?'s':'').' ago';
+		}
+	}
+
+	return '0 seconds ago';
+}
+</code></pre>
+
+		<footer style="margin: 4em 0 8em;">
+			Enjoy! :)
+		</footer>
+		</main>
+	</div>
+
+
+	<script src="js/libs/prism.js"></script>
+
+	<script>
+
+	</script>
+</body>
+</html>
+

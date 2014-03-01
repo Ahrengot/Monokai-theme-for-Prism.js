@@ -1,0 +1,282 @@
+@import "compass/css3";
+
+/**
+ * prism.js Monokai theme for CSS & Sass/Scss
+ *
+ * @todo test for JavaScript & HTML
+ *
+ * @author @MoOx
+ */
+
+$prism-font-family: 	Menlo, Monaco, "Courier New", monospace	!default;
+$prism-font-size: 		12px !default;
+$prism-padding: 		15px !default;
+$prism-line-height:		18px !default;
+$prism-border-radius: 	4px !default;
+$prism-border: 			1px solid #e1e1e8 !default;
+$prism-background: 		#2a2a2a !default;
+$prism-color: 			#76d9e6 !default;
+$prism-color-neutral:	#bebec5 !default;
+$prism-text-shadow: 	none !default;
+
+$prism-color-comment:		#6f705e	!default;
+$prism-color-keyword:		lighten(#ee2870, 4%)	!default; // lighten a bit otherwise the text looks too weak.
+$prism-color-value:			#76d9e6	!default;
+$prism-color-string:		#e6d06c	!default;
+$prism-color-name:			#e6d06c	!default;
+$prism-color-number:		#a77afe	!default;
+$prism-color-variable:		#fff	!default;
+$prism-color-selector:		#a6e22d	!default;
+$prism-color-punctuation:	$prism-color-neutral !default;
+//$prism-color-funtion:	#dc322f	!default;
+
+
+code[class*="language-"],
+pre[class*="language-"] {
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+	// whitespace management
+	white-space: pre; // fallback
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+
+	// theme
+	font-family: $prism-font-family;
+	font-size: 	$prism-font-size;
+	line-height: $prism-line-height;
+
+	color: $prism-color;
+	text-shadow: $prism-text-shadow;
+}
+
+pre[class*="language-"],
+:not(pre) > code[class*="language-"] {
+	background: $prism-background;
+}
+
+// Code blocks
+pre[class*="language-"] {
+	padding: $prism-padding;
+	border-radius: $prism-border-radius;
+	border: $prism-border;
+
+	// &.linenums {
+	// 	box-shadow: inset $prism-linenums-width 0 0 $prism-linenums-background, inset ($prism-linenums-width + $prism-linenums-border-width) 0 0 $prism-linenums-border-color;
+	// 	padding-left: $prism-linenums-padding;
+	// }
+
+	// // Specify class=linenums on a pre to get line numbering
+	// ol.linenums {
+	// 	// IE indents via margin-left
+	// 	margin: 0 0 0 $prism-linenums-width;
+	// 	padding-left: 0;
+	// }
+}
+
+// Inline code
+:not(pre) > code[class*="language-"] {
+	padding: .15em .2em .05em;
+	border-radius: .3em;
+	border: .13em solid hsl(30,20%,40%);
+	box-shadow: 1px 1px .3em -.1em black inset;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token {
+	&.comment,
+	&.prolog,
+	&.doctype,
+	&.cdata {
+		color: $prism-color-comment;
+	}
+
+	&.null,
+	&.operator,
+	&.boolean,
+	&.number {
+		color: $prism-color-number;
+	}
+
+	&.attr-name,
+	&.string {
+		color: $prism-color-string;
+	}
+
+	&.entity,
+	&.url,
+	.language-css &.string,
+	.style &.string {
+		color: $prism-color-string;
+	}
+
+	&.selector {
+		color: $prism-color-selector;
+	}
+
+	&.atrule,
+	&.attr-value,
+	&.keyword,
+	&.control,
+	&.directive,
+	&.important,
+	&.unit {
+		color: $prism-color-keyword;
+	}
+
+	&.regex,
+	&.statement {
+		color: $prism-color-value;
+	}
+
+	&.placeholder,
+	&.variable {
+		color: $prism-color-variable;
+	}
+
+	&.important,
+	&.statement {
+		font-weight: bold;
+	}
+
+	&.punctuation {
+		color: $prism-color-punctuation;
+	}
+
+	&.entity {
+		cursor: help;
+	}
+
+	// for dev :)
+	&.debug { color: red }
+}
+
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+}
+
+.line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em; // Same as .prism’s padding-top
+
+	background: rgba(white, .08);
+
+	pointer-events: none;
+
+	line-height: inherit;
+	white-space: pre;
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0.2em .5em;
+
+	background-color: rgba(white,.4);
+
+	color: black;
+	font: bold 65%/1 sans-serif;
+
+	height: 1em;
+	line-height: 1em;
+
+	text-align: center;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px 1px rgba(white, 0.7);
+}
+
+.line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+}
+
+/******************************************************************
+CODE - SWITCH COLORS A BIT DEPENDING ON LANGUAGE
+******************************************************************/
+code.language-markup {
+	color: #f9f9f9;
+
+	.token {
+		&.tag { color: $prism-color-keyword; }
+		&.attr-name { color: $prism-color-selector; }
+		&.attr-value { color: $prism-color-string; }
+	}
+
+	.token.style, .token.script {
+		color: $prism-color;
+	}
+	.token.script {
+		.token {
+			&.keyword { color: $prism-color; }
+		}
+	}
+}
+
+/******************************************************************
+CODE  - PRISM THEME OVERRIDES
+******************************************************************/
+
+// Overwrite any themes that might think word-wrapping is a cool idea.
+code[class*="language-"],
+pre[class*="language-"] {
+	white-space: pre !important;
+	word-wrap: normal !important;
+	overflow: auto;
+	max-height: 610px;
+}
+
+
+
+// Add code type before code box
+pre {
+	position: relative;
+
+	&:before {
+		position: absolute;
+		top: 0;	left: 0;
+		width: 100%;
+
+		padding: .5em 0;
+		@include background(linear-gradient(#333, black));
+		@include border-radius(4px 4px 0 0);
+		@include box-shadow(0 1px 3px rgba(black, 0.5));
+
+		font: bold 15px/1 sans-serif;
+		color: white;
+		text-indent: 1em;
+	}
+
+	code {
+		overflow: auto;
+		white-space: pre;
+		display: block;
+	}
+}
+
+
+pre.language-markup:before { content: 'HTML'; }
+pre.language-css:before { content: 'CSS'; }
+pre.language-javascript:before { content: 'JavaScript'; }
+pre.language-php:before { content: 'PHP'; }
+pre.language-scss:before { content: 'SCSS (Sass / Compass)'; }
+
