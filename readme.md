@@ -18,7 +18,7 @@ Beware that indentation can mess up the padding around the code a bit, so if you
 ### The theme supports the following languages
 
 1. HTML
-2. scss
-3. css
+2. SCSS (Sass/Compass)
+3. CSS
 4. JavaScript
 5. PHP
