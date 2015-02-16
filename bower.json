@@ -1,0 +1,21 @@
+{
+  "name": "prism-monokai",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Ahrengot/Monokai-theme-for-Prism.js",
+  "authors": [
+    "Jens Ahrengot Boddum <>"
+  ],
+  "description": "Adds the Soda Monokai theme for Prism.js syntax highlighter",
+  "main": "./styles/syntax-highlighting.css",
+  "dependencies": {
+    "prism": "git@github.com:LeaVerou/prism.git#gh-pages"
+  },
+  "keywords": [
+    "syntax",
+    "highlighter",
+    "Prism.js",
+    "Soda",
+    "Monokai"
+  ],
+  "license": "MIT"
+}
